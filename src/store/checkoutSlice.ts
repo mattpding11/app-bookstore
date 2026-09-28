@@ -77,7 +77,7 @@ const checkoutSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.products.status = 'success'
-        state.products.items = action.payload
+        state.products.items = action.payload.filter((product) => product.isActive)
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.products.status = 'error'

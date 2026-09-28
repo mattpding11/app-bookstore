@@ -1,10 +1,12 @@
 export interface Product {
   id: string
-  name: string
+  title: string
   description: string
-  price: number
+  priceCents: number
+  currency: string
   imageUrl: string
   stock: number
+  isActive: boolean
 }
 
 export type DocumentType = 'CC' | 'CE' | 'NIT' | 'PASSPORT'
@@ -41,7 +43,9 @@ async function parseResponse<T>(response: Response): Promise<T> {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const response = await fetch(`${API_URL}/products`)
+  const response = await fetch(`${API_URL}/products`, {
+    credentials: 'include',
+  })
   return parseResponse<Product[]>(response)
 }
 
@@ -52,6 +56,7 @@ export async function processTransaction(
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+    credentials: 'include',
   })
   return parseResponse<Transaction>(response)
 }
