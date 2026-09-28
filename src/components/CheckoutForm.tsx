@@ -47,6 +47,7 @@ export function CheckoutForm() {
         cvc,
         expMonth,
         expYear,
+        cardHolder: fullName,
       })
 
       dispatch(

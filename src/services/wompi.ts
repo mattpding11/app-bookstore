@@ -5,7 +5,7 @@ export interface TokenizeCardPayload {
   cvc: string
   expMonth: string
   expYear: string
-  cardHolder?: string
+  cardHolder: string
 }
 
 export interface WompiCardToken {
