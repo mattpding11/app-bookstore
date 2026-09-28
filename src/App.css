@@ -369,6 +369,14 @@
   font-size: 12px;
   opacity: 0.6;
 }
+
+/* Error pages: 403/404, reuse the .result layout with a large status code */
+.error-page__code {
+  font-size: 48px;
+  font-weight: 700;
+  opacity: 0.3;
+}
+
 .form {
   display: flex;
   flex-direction: column;
