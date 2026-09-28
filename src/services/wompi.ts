@@ -1,4 +1,4 @@
-const WOMPI_TOKENS_URL = 'https://api-sandbox.co.uat.wompi.dev/v1/tokens/cards'
+const WOMPI_TOKENS_URL = import.meta.env.VITE_WOMPI_CARD_API_URL
 
 export interface TokenizeCardPayload {
   number: string

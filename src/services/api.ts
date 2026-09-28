@@ -19,15 +19,23 @@ export interface CustomerInfo {
   documentNumber: string
 }
 
+export interface DeliveryInfo {
+  addressLine: string
+  city: string
+  region: string
+}
+
 export interface ProcessTransactionPayload {
   productId: string
   customer: CustomerInfo
   paymentToken: string
   deliveryFeeCents: number
+  delivery: DeliveryInfo
 }
 
 export interface Transaction {
   id: string
+  reference: string
   status: string
   [key: string]: unknown
 }

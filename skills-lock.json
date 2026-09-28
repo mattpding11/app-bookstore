@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "redux": {
+      "source": "vercel-labs/json-render",
+      "sourceType": "github",
+      "skillPath": "skills/redux/SKILL.md",
+      "computedHash": "b61532c159d455bc5e903c116f235af16b5eb51a0e51955db55ca79d703e4f7d"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "6b526d013e28073246a36f99b529bc43745d30832ecfa8217b359c34f260ca6b"
+    }
+  }
+}

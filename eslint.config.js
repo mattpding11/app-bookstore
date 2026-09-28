@@ -19,4 +19,11 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Test infrastructure/spec files are never Fast-Refreshed, so this rule doesn't apply
+    files: ['**/*.test.{ts,tsx}', 'src/test-utils.tsx', 'src/setupTests.ts'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

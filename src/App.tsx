@@ -1,11 +1,10 @@
 import './App.css'
-import { useAppSelector } from './store/hooks'
+import { Route, Routes } from 'react-router-dom'
 import { ProductList } from './components/ProductList'
 import { ProductDetail } from './components/ProductDetail'
+import { SummaryPage } from './pages/SummaryPage'
 
 function App() {
-  const selectedProduct = useAppSelector((state) => state.checkout.cart.selectedProduct)
-
   return (
     <div className="app">
       <header className="app__header">
@@ -13,7 +12,11 @@ function App() {
       </header>
 
       <main className="app__main">
-        {selectedProduct ? <ProductDetail /> : <ProductList />}
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/detalle/:productId" element={<ProductDetail />} />
+          <Route path="/summary/:reference" element={<SummaryPage />} />
+        </Routes>
       </main>
     </div>
   )
