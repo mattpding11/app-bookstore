@@ -65,10 +65,12 @@ export function SummaryPage() {
 
   const { product, customer, delivery, baseFeeCents, deliveryFeeCents, totalCents } = summary
 
+  console.log("Summary", summary)
+
   return (
     <section className="result">
       <h2 className="modal-title">
-        {summary.status === 'success' ? 'Payment successful' : 'Payment failed'}
+        {summary.status === 'APPROVED' ? 'Payment successful' : summary.status === 'PENDING' ?  'Payment pending': 'Payment failed'}
       </h2>
       <p className="result-message">Your order for &quot;{product.title}&quot; was confirmed.</p>
       <p className="result-reference">Reference: {summary.reference}</p>
