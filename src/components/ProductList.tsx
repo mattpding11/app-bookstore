@@ -62,7 +62,7 @@ export function ProductList() {
   return (
     <section>
       <h2 className="app__section-title">Books</h2>
-
+      <br />
       {status === 'loading' && <p className="status-message">Loading products…</p>}
       {status === 'error' && (
         <div className="status-message">

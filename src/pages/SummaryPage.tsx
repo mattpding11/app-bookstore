@@ -65,8 +65,6 @@ export function SummaryPage() {
 
   const { product, customer, delivery, baseFeeCents, deliveryFeeCents, totalCents } = summary
 
-  console.log("Summary", summary)
-
   return (
     <section className="result">
       <h2 className="modal-title">
