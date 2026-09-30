@@ -18,6 +18,7 @@ import type { DocumentType } from '../services/api'
 
 const DOCUMENT_TYPES: DocumentType[] = ['CC', 'CE', 'NIT', 'PASSPORT']
 const MIN_EXP_YEAR = 26
+const WOMPI_SANDBOX_URL = import.meta.env.VITE_WOMPI_SANDBOX_API_URL
 
 interface FormValues {
   email: string
@@ -164,7 +165,12 @@ export function PaymentModal() {
   }
 
   async function handlePay() {
-    if (!customer || !selectedProduct || !delivery) return
+
+   if (!customer || !selectedProduct || !delivery) {
+    console.error("Fallo de Estado:", { customer, selectedProduct, delivery });
+    alert("Error interno: Faltan datos en el estado de Redux. Revisa la consola.");
+    return;
+  }
 
     setPayError(null)
     setIsTokenizing(true)
@@ -188,9 +194,25 @@ export function PaymentModal() {
         }),
       ).unwrap()
 
+      const transactionId = transaction.wompiTransactionId;
+
+      const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+      await wait(2000);
+
+      const transactionInfo = await fetch(`${WOMPI_SANDBOX_URL}/transactions/${transactionId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      const res = await transactionInfo.json() 
+      const currentStatus = res.data.status
+
+      console.log("OK...")
+
       await savePurchaseSummary({
         reference: transaction.reference,
-        status: transaction.status,
+        status: currentStatus,
         product: selectedProduct,
         customer,
         delivery,

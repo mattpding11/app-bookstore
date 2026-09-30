@@ -1,4 +1,4 @@
-const WOMPI_TOKENS_URL = import.meta.env.VITE_WOMPI_CARD_API_URL
+const WOMPI_SANDBOX_URL = import.meta.env.VITE_WOMPI_SANDBOX_API_URL
 
 export interface TokenizeCardPayload {
   number: string
@@ -22,7 +22,7 @@ interface WompiTokenResponse {
 export async function tokenizeCard(
   payload: TokenizeCardPayload,
 ): Promise<WompiCardToken> {
-  const response = await fetch(WOMPI_TOKENS_URL, {
+  const response = await fetch(`${WOMPI_SANDBOX_URL}/tokens/cards`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
